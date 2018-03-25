@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Couriers</title>
+<style>
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+    <body> 
+    <form style="text-align:center" action="/search" method="POST">
+        <h1>List Of Couriers</h1><br>
+        <input type="text" name="search" placeholder="Enter Name">&nbsp;
+        <button type="submit">Search</button><br><br>
+    </form>
+        <table class="table table-striped" align="center" border="2">
+        <thead>
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>RoomNo</th>
+        <th>Hostel</th>
+        <th>Date</th>
+        <th>Address</th>
+        <th>Type</th>
+        <th>Delete</th>
+        </tr>
+        </thead>
+        {% for c in couriers %}
+        <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.roomno }}</td>
+        <td>{{ c.hostel }}</td>
+        <td>{{ c.date }}</td>
+        <td>{{ c.addr }}</td>
+        <td>{{ c.typ }}</td>
+         <td><form action="/delete/{{ c.id }}"><button>Delete</button></form></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>    

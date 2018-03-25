@@ -1,0 +1,235 @@
+#+AUTHOR: Ayush Agrawal, Abhishek Nalla, Santosh Vishal
+#+title : Courier Portal
+#+SETUPFILE: ../../org-templates/level-2.org
+#+EXCLUDE_TAGS: boilerplate
+#+PROPERTY: session *scheme*
+#+PROPERTY: results output
+#+PROPERTY: exports code
+#+TAGS: boilerplate(b) notes(n) solution(s)
+
+
+* Introduction
+
+The following project that we, Ayush Agrawal, Abhishek Nalla and Santosh Vishal,
+have created is to create a Courier Portal to manage the couriers coming in an 
+institute and distributing them properly.
+
+** Languages used
+
+#+name: python3
+#+BEGIN_SRC scheme :session none
+#python3
+#+END_SRC
+
+#+name: html
+#+BEGIN_SRC scheme :session none
+#html
+#+END_SRC
+
+* app
+
+This package contains the main part or source code of our running
+program that we have defined in the __init__.py file.
+
+** user...
+
+Here,  we have created the Security type of user who is responsible for 
+the management and distribution of couriers that have been delivered 
+to the campus.
+
+He/She maintains the database and with the help of various
+functionalities.
+
+The security is given the authorization to add any type of package, 
+search on the basis of name (any part of the name) and also delete
+the packages from the database when they are taken.
+
+Also the security needs to register himself/herself before he/she can 
+be logged in.
+
+The security type of user has also been authenticated.
+
+** others...
+
+Here, we have created the others type of user who is capable of viewing
+and searching the couriers in the database.
+
+These are the people who are the receivers of the couriers.
+
+Such  type of user must also register himself/herself before he/she is capable 
+of logging in to the portal to view the packages delivered to the campus.
+
+The user can only use the search engine based on the name (any part of the name) 
+parameter to search for packages delivered on his/her name.
+
+** courier...
+
+In couriers, we are responsible for creating a visible database in the form of
+a table to view all the packages that have been delivered to the campus.
+
+Here we are capable of adding packages into the table by filling in the 
+required details.
+
+In this part, we have implemented all the functionalities to work with 
+couriers. 
+
+We have provided all the routes to the various pages based on our
+implementation such as search, list and delete pages.
+
+The security and others are capable of interacting with the courier table 
+with the help of various functionalites implemented here.
+
+** static...
+
+This part contains the css and styling in our code.
+
+We have used bootstrap in our code to build our frontend and make the courier 
+portal look appealing.  
+
+We have also included images to decorate our frontend.
+
+** templates...
+
+This part contains the main html part of the project.
+
+It contains all the pages that we are returning or redirecting to using our
+python part of the code.
+
+** __init__.py
+
+This file contains all the binding parts of our app by importing for us all 
+the different functionalities provided by flask.
+
+We register all the Blueprints and routes in this file.
+
+We have also defined authentication to provide for our running program which
+is very necessary.
+
+Also, we have defined the error handler here which prompts for error.
+
+* app.db
+
+This is the database which stores all the tables which we created to store 
+registered user information as well as detail of all the couriers.
+
+* config.py
+
+This is a configuration file of the application
+=DEBUG=True= which is used for updating pages without restarting server again.
+
+=BASE_DIR= is a path of the current directory.
+
+After that databases are defined and CSRF has been enabled.
+
+* run.py
+
+This imports =import app from app=  which basically imports app defined in 
+=__init__.py=.
+
+Then it uses =app.run()= which runs the server.
+he relations and constraints between different entities and operations defined
+uniquely for each of them in the application are:
+ 
+Each security user can relate to more than one email by registering multiple 
+times.
+
+#+BEGIN_SRC eval no
+Security: User > Email+
+#+END_SRC
+
+Each security email registered can relate to exactly one security user only. 
+Same email can not be used by multiple security users.
+
+#+BEGIN_SRC eval no
+Security: Email > User!
+#+END_SRC
+
+Similarly, the others type of user also has the same valid constraints on user
+and email respectively.
+
+#+BEGIN_SRC eval no
+Others: User > Email+
+#+END_SRC
+
+#+BEGIN_SRC eval no
+Others: Email > User!
+#+END_SRC
+
+
+
+This imports =import app from app=  which basically imports app defined in 
+=__init__.py=.
+
+Then it uses =app.run()= which runs the server.
+
+* Deployment 
+
+We have deployed our portal through the VPN(site-to-site) gateway.
+
+Our portal is now available to be accessed through the IIIT network or 
+through VPN.
+
+Our laptops act as servers.
+
+We used nginx for deployment which was taught to us in our last lab.
+
+* Data Models implemented
+
+The relations and constraints between different entities and operations defined
+uniquely for each of them in the application are:
+ 
+Each security user can relate to more than one email by registering multiple 
+times.
+
+#+BEGIN_SRC 
+Security: User > Email+
+#+END_SRC
+
+Each security email registered can relate to exactly one security user only. 
+Same email can not be used by multiple security users.
+
+#+BEGIN_SRC 
+Security: Email > User!
+#+END_SRC
+
+Similarly, the others type of user also has the same valid constraints on user
+and email respectively.
+
+#+BEGIN_SRC 
+Others: User > Email+
+#+END_SRC
+
+#+BEGIN_SRC 
+Others: Email > User!
+#+END_SRC
+
+
+|-----------------------------------+-----------+---+---|
+| Cardinality of Security, Others   | Notation  |   |   |
+|-----------------------------------+-----------+---+---|
+| User can relate to many Emails    | r: A > B+ |   |   |
+|-----------------------------------+-----------+---+---|
+| Email can relate to one User only | r: B > A! |   |   |
+|-----------------------------------+-----------+---+---|
+
+Also, thanks to authentication for each type of user seperately, each user has 
+exactly one role and atmost one session only
+
+#+BEGIN_SRC 
+Security,Others: [User,role] > Session?
+#+END_SRC
+
+And, each session is uniquely determined by one user only. No two sessions can
+have the same user.
+
+#+BEGIN_SRC 
+Security,Others: Session > [User,role]!
+#+END_SRC
+
+|---------------------------------------+-----------+---+---|
+| Cardinality of Security, Others       | Notation  |   |   |
+|---------------------------------------+-----------+---+---|
+| User can relate to atmost one Session | r: A > B? |   |   |
+|---------------------------------------+-----------+---+---|
+| Each Session relates to one User only | r: B > A! |   |   |
+|---------------------------------------+-----------+---+---|

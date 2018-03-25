@@ -1,0 +1,7 @@
+body {
+        background-image: url('path.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: 50% 0%;
+        background-size: 1500px 140px
+}

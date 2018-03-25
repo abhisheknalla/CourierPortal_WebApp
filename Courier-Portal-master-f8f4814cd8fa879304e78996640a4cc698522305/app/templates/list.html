@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Couriers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/vendor/list1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    input[type=text], select {
+    padding: 8px 15px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  </style>
+</head>
+<body>
+ <form style="text-align:center" action="/search" method="POST">
+        <h2 style="color:white; background-color:black;">List Of Couriers</h2><br>
+        <input type="text" name="search" placeholder="Enter Name">&nbsp;
+        <button type="submit" class="btn btn-default">Search</button>
+        <button style="position:relative;left:30%;right:30%;" type="submit" class="btn btn-default" formaction="/api/loginpage">Logout</button><br>
+ </form>
+ <br>
+ <form style="text-align:center" action="/addNew" method="GET">
+        <button style="position:relative;left:-2%;" type="submit" class="btn btn-default">Add New</button><br>
+ </form>
+ <br>
+<div class="container">        
+  <table class="table table-striped" align="center">
+        <thead>
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Room No</th>
+        <th>Hostel</th>
+        <th>Date</th>
+        <th>Address</th>
+        <th>Type</th>
+        <th>Delete</th>
+        </tr>
+        </thead>
+        {% for c in couriers %}
+        <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.roomno }}</td>
+        <td>{{ c.hostel }}</td>
+        <td>{{ c.date }}</td>
+        <td>{{ c.addr }}</td>
+        <td>{{ c.typ }}</td>
+         <td><form action="/delete" method="post"><button class="btn btn-default" name="del" value="{{ c.id }}">Delete</button></form></td>
+        </tr>
+        {% endfor %}
+        </table>
+</div>
+
+</body>
+</html>

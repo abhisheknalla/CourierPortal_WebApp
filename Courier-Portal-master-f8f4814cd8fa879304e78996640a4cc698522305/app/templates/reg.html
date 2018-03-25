@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courier Portal</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/vendor/back.css">
+    <link rel="stylesheet" href="/static/css/vendor/reg.css">
+</head>
+<body>
+    <div class="container">
+<div class="row">
+<br><br>
+        <h1 class="text-center">Security Register</h1>
+    <div class="col-sm-4 col-sm-offset-4">
+        <form action="/api/register" method="POST">
+            <p class="message text-danger"></p>
+            <div class="form-group">
+                <label for="register-name">Name</label>
+                <input type="text" class="form-control" id="register-name" name="name" placeholder="Enter your name" style="width:150%">
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" class="form-control" id="register-email" name="email" placeholder="Enter your email" style="width:150%">
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" class="form-control" id="register-password" name="password" placeholder="Enter your password" style="width:150%">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+        <p>
+            <br>
+            <a href="/api/loginpage"><font color="black">Login</font></a>
+        </p>
+    </div>
+</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+    <meta charset="UTF-8">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> 
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
+    </style>
+<!--    <script>
+var addNewCourier=function(name,roomno,hostel,addr,typ,date){
+   console.log(name);
+   console.log(roomno);
+   console.log(hostel);
+   console.log(addr);
+   console.log(typ);
+   console.log(date);
+    $.ajax({
+      url: 'http://127.0.0.1:5000/addCourier',
+      method: 'POST',
+      data:{
+        name:name,
+        roomno:roomno,
+        hostel:hostel,
+        addr:addr,
+        typ:typ,
+        date:date,
+      },
+      success:function(response){
+        console.log(response)
+      },
+      error: function(response){
+        console.log(response)
+      }
+    });
+};
+</script> -->
+</head>
+<body>
+<h1 style="text-align: center; color: grey">Add Courier</h1>
+  <div class="bootstrap-iso">
+  <div class="center">
+  <div class="jumbotron">
+ <div class="container" style="width : 25%">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+       <form action="/addCourier" method="post">
+     <div class="form-group ">
+      <label class="control-label " for="name5">
+       Name
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="name" name="name" type="text" />
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="name3">
+       Room No
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="roomno" name="roomno" type="text"/>
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="subject">
+       Hostel
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="hostel" name="hostel" type="text"/>
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="name1">
+       Address
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="addr" name="addr" type="text"/>
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="name2">
+       Type
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="typ" name="typ" type="text"/>
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="date">
+       Date
+      </label>
+      <div class="col-xs-22" style="width: 300px">
+      <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+     </div>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-primary " name="submit" type="submit">Add</button>
+      </form> <!--
+        <button class="btn btn-primary " name="submit" type="submit" onclick="addNewCourier(document.getElementById('name').value,
+        document.getElementById('roomno').value,
+        document.getElementById('hostel').value,
+        document.getElementById('addr').value,
+        document.getElementById('typ').value,
+        document.getElementById('date').value)"> 
+        Add
+       </button> -->
+      </div>
+     </div>
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</body>
+</html>

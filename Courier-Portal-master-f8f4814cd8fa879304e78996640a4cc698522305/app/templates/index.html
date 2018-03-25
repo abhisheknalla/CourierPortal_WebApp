@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courier Portal</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/vendor/back.css">
+    <link rel="stylesheet" href="/static/css/vendor/index.css">
+</head>
+<body>
+    <div class="container"><br><br><br><br><br>
+<div class="row">
+<br><br>
+        <h1 class="text-center">Security Login</h1>
+    <div class="col-sm-4 col-sm-offset-4">
+        <form action="/api/login" method="POST">
+            <p class="message text-danger"></p>
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" class="form-control" id="login-email" name="email" placeholder="Enter your email" style="width:150%">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" class="form-control" id="login-password" name="password" placeholder="Enter your password" style="width:150%">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p>
+            <br>
+            <br>
+            <a href="/api/register"><font color="black">Security Register</font></a><br><br>
+            <a href="/"><font color="black">Login</font></a>
+        </p>
+    </div>
+</div>
+    </div>
+</body>
+</html>
